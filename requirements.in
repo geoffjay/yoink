@@ -1,0 +1,4 @@
+fastapi
+pyppeteer
+requests
+uvicorn[standard]
