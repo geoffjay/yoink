@@ -2,8 +2,8 @@
 
 ![logo](./assets/logo.png)
 
-Test app to create a client session through login and making subsequent calls
-to an API with it.
+Test app to create a client session through a login performed in the background
+using Pyppeteer and making subsequent calls to an API with it.
 
 ## Setup
 
