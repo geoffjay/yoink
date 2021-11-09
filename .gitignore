@@ -1,5 +1,7 @@
 *~
 *.sw[op]
 
+.venv
+
 *.pyc
 /__pycache__/

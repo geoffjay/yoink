@@ -1,4 +1,6 @@
 fastapi
+jinja2
 pyppeteer
+python-multipart
 requests
 uvicorn[standard]

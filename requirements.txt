@@ -47,6 +47,12 @@ importlib-metadata==4.8.1
     # via
     #   -r requirements.txt
     #   pyppeteer
+jinja2==3.0.2
+    # via -r requirements.txt
+markupsafe==2.0.1
+    # via
+    #   -r requirements.txt
+    #   jinja2
 pydantic==1.8.2
     # via
     #   -r requirements.txt
@@ -61,12 +67,18 @@ python-dotenv==0.19.1
     # via
     #   -r requirements.txt
     #   uvicorn
+python-multipart==0.0.5
+    # via -r requirements.txt
 pyyaml==6.0
     # via
     #   -r requirements.txt
     #   uvicorn
 requests==2.26.0
     # via -r requirements.txt
+six==1.16.0
+    # via
+    #   -r requirements.txt
+    #   python-multipart
 sniffio==1.2.0
     # via
     #   -r requirements.txt
