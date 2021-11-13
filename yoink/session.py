@@ -27,6 +27,10 @@ class Session:
         return None
 
     @property
+    def base_url(self):
+        return "https://app.clio.com"
+
+    @property
     def cookies(self):
         return self._cookies
 
@@ -63,6 +67,7 @@ class Session:
             },
         )
         self.page = await self.browser.newPage()
+        await self.page.setUserAgent("yoink! - 0.1")
 
     async def tear_down(self):
         logger.debug("Performing session shutdown")
@@ -73,7 +78,7 @@ class Session:
     async def login(self, email, password):
         logger.debug("Performing session login")
         logger.debug(f"Login with {email}:{password}")
-        await self.page.goto(f"http://app.myclio.ca:3000")
+        await self.page.goto(self.base_url)
         await self.page.waitForXPath("//main[@class='ui-main']")
         await self.page.waitForXPath("//input[@type='email']")
         await self.page.type("input[type='email']", email)
@@ -83,13 +88,13 @@ class Session:
         await self.page.type("input[type='password']", password)
         await self.page.click("input[type='submit']")
         await self.page.waitForXPath("/html[@ng-app='ApolloApp']")
-        response = await self.page.goto(f"http://app.myclio.ca:3000")
+        response = await self.page.goto(self.base_url)
         self._cookies = await self.page.cookies()
         self._headers = response.headers if response else {}
 
     async def who_am_i(self):
         response = await self.page.goto(
-            f"http://app.myclio.ca:3000/api/v4/users/who_am_i",
+            f"{self.base_url}/api/v4/users/who_am_i",
             {"waitUntil": "domcontentloaded"},
         )
         return response

@@ -76,8 +76,9 @@ async def session_cookies():
 @session_required
 async def session_requests():
     response = requests.get(
-        "http://app.myclio.ca:3000/api/v4/users/who_am_i",
-        cookies=state.session.cookie_jar,
+        f"{state.session.base_url}/api/v4/users/who_am_i",
+        # cookies=state.session.cookie_jar,
+        headers=state.session.headers,
     )
     return response.json()
 
